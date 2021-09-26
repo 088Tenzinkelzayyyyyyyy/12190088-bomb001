@@ -290,3 +290,6 @@ End of assembler dump.
 main (argc=<optimized out>, argv=<optimized out>) at bomb.c:83
 83	    phase_defused();
 (gdb) 
+
+Comments:
+Breakpoints are put to avoid the exploding of the bomb. A stack frame of 56 bytes is made. We see that this phase wants an input of 6 numbers. We are comparing between the registers. The stack frame is closed after comparing the registers. We try to step-into read_six_numbers function and then $0x4025c3 is put into %esi which is compared to our input. To pass the bomb, the input has to be 0 and the second input has to be 1. The third input entered is 1 and after analyzing the first three numbers we saw that it was a fibonacci series so the inputs were put accordingly.
